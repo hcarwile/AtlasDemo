@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Demo — Refi Estimate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/shared.css" />
+  <script src="../assets/demo-data.js"></script>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="page-top">
+      <div>
+        <h1>Refinance estimate</h1>
+        <p>Simple demo for savings-oriented rate-term refinance structure.</p>
+      </div>
+      <a class="btn" href="dashboard.html">Back</a>
+    </div>
+
+    <div class="grid-3">
+      <div class="card panel"><div class="eyebrow">New rate</div><h2 class="mono" id="rate"></h2><p>Illustrative pricing</p></div>
+      <div class="card panel"><div class="eyebrow">New payment</div><h2 class="mono" id="payment"></h2><p>Estimated principal and interest</p></div>
+      <div class="card panel"><div class="eyebrow">Monthly savings</div><h2 class="mono" id="savings"></h2><p>Versus prior sample payment</p></div>
+    </div>
+
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card panel">
+        <table class="data-table">
+          <tr><th>Field</th><th>Value</th></tr>
+          <tr><td>Borrower</td><td id="borrower"></td></tr>
+          <tr><td>Purpose</td><td id="purpose"></td></tr>
+          <tr><td>Current balance</td><td id="current"></td></tr>
+          <tr><td>New loan amount</td><td id="newloan"></td></tr>
+          <tr><td>Break-even</td><td id="breakeven"></td></tr>
+        </table>
+      </div>
+      <div class="card panel">
+        <div class="callout" id="summary"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const d = window.DEMO.refi;
+    rate.textContent = d.rate; payment.textContent = d.payment; savings.textContent = d.monthlySavings;
+    borrower.textContent = d.borrower; purpose.textContent = d.purpose; current.textContent = d.currentBalance;
+    newloan.textContent = d.newLoan; breakeven.textContent = d.breakeven;
+    summary.textContent = `Sample refinance story: ${d.currentBalance} balance into a ${d.newLoan} new loan at ${d.rate}, with projected savings of ${d.monthlySavings} per month and an estimated ${d.breakeven} break-even.`;
+  </script>
+</body>
+</html>

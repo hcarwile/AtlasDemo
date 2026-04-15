@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Demo — Pre-Approval and Scenarios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/shared.css" />
+  <script src="../assets/demo-data.js"></script>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="page-top">
+      <div>
+        <h1>Pre-approval + scenarios</h1>
+        <p>Two public-safe presentation pages combined into one shareable demo.</p>
+      </div>
+      <a class="btn" href="dashboard.html">Back</a>
+    </div>
+
+    <div class="grid-2">
+      <div class="card panel">
+        <div class="eyebrow">Pre-approval summary</div>
+        <h2 style="margin:0 0 12px" id="buyer"></h2>
+        <table class="data-table">
+          <tr><th>Field</th><th>Value</th></tr>
+          <tr><td>Max purchase price</td><td id="max"></td></tr>
+          <tr><td>Target payment</td><td id="target"></td></tr>
+          <tr><td>Down payment</td><td id="down"></td></tr>
+          <tr><td>Loan type</td><td id="type"></td></tr>
+          <tr><td>Status</td><td id="status"></td></tr>
+        </table>
+      </div>
+      <div class="card panel">
+        <div class="eyebrow">Scenario comparison</div>
+        <table class="data-table">
+          <tr><th>Option</th><th>Amount</th></tr>
+          <tr><td>Home value</td><td id="value"></td></tr>
+          <tr><td>Current mortgage</td><td id="mortgage"></td></tr>
+          <tr><td>Desired cash out</td><td id="cashout"></td></tr>
+          <tr><td>Refi payment</td><td id="refi"></td></tr>
+          <tr><td>Second-lien payment</td><td id="second"></td></tr>
+          <tr><td>Blend payment</td><td id="blend"></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card panel" style="margin-top:16px">
+      <div class="callout">Use this combined page when you want one clean demo link instead of juggling multiple files. It keeps the feel of a mortgage workflow presentation without exposing your real borrowers, contact info, or deal structure.</div>
+    </div>
+  </div>
+  <script>
+    const p = window.DEMO.preapproval, s = window.DEMO.scenario;
+    buyer.textContent = p.buyer; max.textContent = p.maxPurchase; target.textContent = p.targetPayment;
+    down.textContent = p.downPayment; type.textContent = p.loanType; status.textContent = p.status;
+    value.textContent = s.homeValue; mortgage.textContent = s.currentMortgage; cashout.textContent = s.desiredCashOut;
+    refi.textContent = s.refiPayment; second.textContent = s.secondLienPayment; blend.textContent = s.blendPayment;
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Demo — Outreach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/shared.css" />
+  <script src="../assets/demo-data.js"></script>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="page-top">
+      <div>
+        <h1>Outreach Command</h1>
+        <p>Fictional pipeline activity with sample segments and next actions.</p>
+      </div>
+      <a class="btn" href="dashboard.html">Back to dashboard</a>
+    </div>
+
+    <div class="card panel">
+      <div class="kpi-row">
+        <div class="kpi"><label>Contacts</label><strong id="contacts"></strong><span>Rolling demo queue</span></div>
+        <div class="kpi"><label>Conversations</label><strong id="conversations"></strong><span>Qualified replies</span></div>
+        <div class="kpi"><label>Applications</label><strong id="apps"></strong><span>Illustrative apps</span></div>
+        <div class="kpi"><label>Locks</label><strong id="locks"></strong><span>Mock locks</span></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card panel">
+        <div class="section-title" style="margin-top:0"><h2 style="font-size:20px">Top segments</h2></div>
+        <table class="data-table" id="segmentTable"></table>
+      </div>
+      <div class="card panel">
+        <div class="section-title" style="margin-top:0"><h2 style="font-size:20px">Follow-up queue</h2></div>
+        <table class="data-table" id="queueTable"></table>
+      </div>
+    </div>
+  </div>
+  <script>
+    const d = window.DEMO.outreach;
+    contacts.textContent = d.contacts;
+    conversations.textContent = d.conversations;
+    apps.textContent = d.apps;
+    locks.textContent = d.locks;
+    segmentTable.innerHTML = '<tr><th>Segment</th><th>Count</th></tr>' + d.topSegments.map(r => `<tr><td>${r[0]}</td><td class="mono">${r[1]}</td></tr>`).join('');
+    queueTable.innerHTML = '<tr><th>Contact</th><th>Need</th><th>Status</th></tr>' + d.queue.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+  </script>
+</body>
+</html>

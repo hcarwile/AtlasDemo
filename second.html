@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Demo — Second Lien</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/shared.css" />
+  <script src="../assets/demo-data.js"></script>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="page-top">
+      <div>
+        <h1>Second-lien estimate</h1>
+        <p>Demo structure for HELOAN / HELOC style conversations.</p>
+      </div>
+      <a class="btn" href="dashboard.html">Back</a>
+    </div>
+
+    <div class="grid-3">
+      <div class="card panel"><div class="eyebrow">Line amount</div><h2 class="mono" id="line"></h2><p>Illustrative draw limit</p></div>
+      <div class="card panel"><div class="eyebrow">Rate</div><h2 class="mono" id="rate"></h2><p>Sample public-safe rate</p></div>
+      <div class="card panel"><div class="eyebrow">Combined LTV</div><h2 class="mono" id="cltv"></h2><p>Rounded estimate</p></div>
+    </div>
+
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card panel">
+        <table class="data-table">
+          <tr><th>Field</th><th>Value</th></tr>
+          <tr><td>Borrower</td><td id="borrower"></td></tr>
+          <tr><td>Draw-period payment</td><td id="draw"></td></tr>
+          <tr><td>Fixed-period payment</td><td id="fixed"></td></tr>
+        </table>
+      </div>
+      <div class="card panel">
+        <div class="section-title" style="margin-top:0"><h2 style="font-size:20px">Example use of funds</h2></div>
+        <div class="tag-row" id="uses"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const d = window.DEMO.second;
+    line.textContent = d.lineAmount; rate.textContent = d.rate; cltv.textContent = d.combinedLtv;
+    borrower.textContent = d.borrower; draw.textContent = d.drawPayment; fixed.textContent = d.fixedPayment;
+    uses.innerHTML = d.useOfFunds.map(x => `<span class="tag">${x}</span>`).join('');
+  </script>
+</body>
+</html>
